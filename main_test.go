@@ -22,3 +22,22 @@ func TestContains(t *testing.T) {
 		}
 	})
 }
+
+func TestContainsString(t *testing.T) {
+	t.Run("test it contains string item", func(t *testing.T) {
+		got := ContainsString([]string{"foo", "bar", "baz"}, "foo")
+		want := true
+
+		if got != want {
+			t.Errorf("got %v want %v", got, want)
+		}
+	})
+	t.Run("test it not contains string item", func(t *testing.T) {
+		got := ContainsString([]string{"foo", "bar", "baz"}, "foobar")
+		want := false
+
+		if got != want {
+			t.Errorf("got %v want %v", got, want)
+		}
+	})
+}
