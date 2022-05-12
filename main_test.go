@@ -9,9 +9,7 @@ func TestContains(t *testing.T) {
 		got := Contains([]int{1, 2, 3}, 1)
 		want := true
 
-		if got != want {
-			t.Errorf("got %v want %v", got, want)
-		}
+		assertCorrectMessage(got, want, t)
 	})
 	t.Run("test it not contains integer item", func(t *testing.T) {
 		got := Contains([]int{1, 2, 3}, 9)
@@ -21,6 +19,12 @@ func TestContains(t *testing.T) {
 			t.Errorf("got %v want %v", got, want)
 		}
 	})
+}
+
+func assertCorrectMessage(got bool, want bool, t *testing.T) {
+	if got != want {
+		t.Errorf("got %v want %v", got, want)
+	}
 }
 
 func TestContainsString(t *testing.T) {
