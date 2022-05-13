@@ -24,25 +24,25 @@ func TestContains(t *testing.T) {
 		assertCorrectMessage(got, want, t)
 	})
 	t.Run("test it contains string item", func(t *testing.T) {
-		got := ContainsString([]string{"foo", "bar", "baz"}, "foo")
+		got := Contains([]string{"foo", "bar", "baz"}, "foo")
 		want := true
 
 		assertCorrectMessage(got, want, t)
 	})
 	t.Run("test it not contains string item", func(t *testing.T) {
-		got := ContainsString([]string{"foo", "bar", "baz"}, "foobar")
+		got := Contains([]string{"foo", "bar", "baz"}, "foobar")
 		want := false
 
 		assertCorrectMessage(got, want, t)
 	})
 	t.Run("test it contains float item", func(t *testing.T) {
-		got := ContainsFloat([]float32{1.15, 2.75, 3.99}, 1.15)
+		got := Contains([]float32{1.15, 2.75, 3.99}, 1.15)
 		want := true
 
 		assertCorrectMessage(got, want, t)
 	})
 	t.Run("test it not contains float item", func(t *testing.T) {
-		got := ContainsFloat([]float32{1.15, 2.75, 3.99}, 9.85)
+		got := Contains([]float32{1.15, 2.75, 3.99}, 9.85)
 		want := false
 
 		assertCorrectMessage(got, want, t)

@@ -1,6 +1,6 @@
 package main
 
-func Contains(items []int, item int) bool {
+func Contains[T comparable](items []T, item T) bool {
 	for _, v := range items {
 		if v == item {
 			return true
@@ -9,28 +9,10 @@ func Contains(items []int, item int) bool {
 	return false
 }
 
-func ContainsString(items []string, item string) bool {
-	for _, v := range items {
-		if v == item {
-			return true
-		}
-	}
-	return false
-}
-
-func ContainsFloat(items []float32, item float32) bool {
-	for _, v := range items {
-		if v == item {
-			return true
-		}
-	}
-	return false
-}
-
-func main()  {
+func main() {
 	if Contains([]int{1, 2, 3}, 10) {
-		println("OK")	
+		println("OK")
 	} else {
 		println("KO")
-	}	
+	}
 }
