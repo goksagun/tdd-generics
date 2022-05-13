@@ -18,6 +18,15 @@ func ContainsString(items []string, item string) bool {
 	return false
 }
 
+func ContainsFloat(items []float32, item float32) bool {
+	for _, v := range items {
+		if v == item {
+			return true
+		}
+	}
+	return false
+}
+
 func main()  {
 	if Contains([]int{1, 2, 3}, 10) {
 		println("OK")	
