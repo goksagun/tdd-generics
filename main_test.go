@@ -4,6 +4,12 @@ import (
 	"testing"
 )
 
+func assertCorrectMessage(got bool, want bool, t *testing.T) {
+	if got != want {
+		t.Errorf("got %v want %v", got, want)
+	}
+}
+
 func TestContains(t *testing.T) {
 	t.Run("test it contains integer item", func(t *testing.T) {
 		got := Contains([]int{1, 2, 3}, 1)
@@ -15,16 +21,8 @@ func TestContains(t *testing.T) {
 		got := Contains([]int{1, 2, 3}, 9)
 		want := false
 
-		if got != want {
-			t.Errorf("got %v want %v", got, want)
-		}
+		assertCorrectMessage(got, want, t)
 	})
-}
-
-func assertCorrectMessage(got bool, want bool, t *testing.T) {
-	if got != want {
-		t.Errorf("got %v want %v", got, want)
-	}
 }
 
 func TestContainsString(t *testing.T) {
@@ -32,16 +30,12 @@ func TestContainsString(t *testing.T) {
 		got := ContainsString([]string{"foo", "bar", "baz"}, "foo")
 		want := true
 
-		if got != want {
-			t.Errorf("got %v want %v", got, want)
-		}
+		assertCorrectMessage(got, want, t)
 	})
 	t.Run("test it not contains string item", func(t *testing.T) {
 		got := ContainsString([]string{"foo", "bar", "baz"}, "foobar")
 		want := false
 
-		if got != want {
-			t.Errorf("got %v want %v", got, want)
-		}
+		assertCorrectMessage(got, want, t)
 	})
 }
