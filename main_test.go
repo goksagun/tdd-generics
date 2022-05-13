@@ -47,4 +47,16 @@ func TestContains(t *testing.T) {
 
 		assertCorrectMessage(got, want, t)
 	})
+	t.Run("test it contains int32 item", func(t *testing.T) {
+		got := Contains([]int32{1, 2, 3}, 1)
+		want := true
+
+		assertCorrectMessage(got, want, t)
+	})
+	t.Run("test it not contains int32 item", func(t *testing.T) {
+		got := Contains([]int32{1, 2, 3}, 9)
+		want := false
+
+		assertCorrectMessage(got, want, t)
+	})
 }
