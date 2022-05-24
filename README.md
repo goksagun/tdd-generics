@@ -101,3 +101,55 @@ go test
 PASS
 ok      example 0.196s
 ```
+
+## Contains string
+
+Imagine that for many arrays with different types we need to check if an array contains a string. We need to create a new function for string type.
+
+*first test...*
+
+```go
+func TestContainsString(t *testing.T) {
+	t.Run("test it contains string item", func(t *testing.T) {
+		got := ContainsString([]string{"foo", "bar", "baz"}, "foo")
+		want := true
+
+		if got != want {
+			t.Errorf("got %v want %v", got, want)
+		}
+	})
+	t.Run("test it not contains string item", func(t *testing.T) {
+		got := ContainsString([]string{"foo", "bar", "baz"}, "foobar")
+		want := false
+
+		if got != want {
+			t.Errorf("got %v want %v", got, want)
+		}
+	})
+}
+```
+
+*...implement simple working code*
+
+```go
+func ContainsString(items []string, item string) bool {
+	for _, v := range items {
+		if v == item {
+			return true
+		}
+	}
+	return false
+}
+```
+
+*run tests*
+
+```sh
+go test
+```
+
+```sh
+❯ go test
+PASS
+ok      example 0.103s
+```
