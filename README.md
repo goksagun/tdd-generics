@@ -209,3 +209,53 @@ ok      example 0.109s
 ```
 
 Allt he test passes and everytihng seems ok.
+
+## What about contains float?
+
+*first test...*
+
+```go
+func TestContainsFloat(t *testing.T) {
+	t.Run("test it contains float item", func(t *testing.T) {
+		got := ContainsFloat([]float32{1.15, 2.75, 3.99}, 1.15)
+		want := true
+
+		assertCorrectMessage(got, want, t)
+	})
+	t.Run("test it not contains float item", func(t *testing.T) {
+		got := ContainsFloat([]float32{1.15, 2.75, 3.99}, 9.85)
+		want := false
+
+		assertCorrectMessage(got, want, t)
+	})
+}
+```
+
+*...implement simple working code*
+
+```go
+func ContainsFloat(items []float32, item float32) bool {
+	for _, v := range items {
+		if v == item {
+			return true
+		}
+	}
+	return false
+}
+```
+
+*run tests*
+
+```sh
+go test
+```
+
+```sh
+❯ go test
+PASS
+ok      example 0.106s
+```
+
+It works fine. We have only one problem with this approach. Imagine that for many arrays with different types we need to check if an array contains a value. To archive this, we need to create a new function for each type. This leads to a very verbose and duplicate code base. 
+
+Fortunately for us, Golang introduced a number of different generic types a few months ago. In the next chapter, we can use one of them to make our solution a little bit more flexible.
